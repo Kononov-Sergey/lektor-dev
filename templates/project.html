@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+{% block title %}{{ this.name }} ({{ this.date.year }}){% endblock %}
+{% block body %}
+  <h1>{{ this.name }}</h1>
+  {% for image in this.attachments.images %}
+      <div class="image"><img width="100px" src="{{ image|url }}"></div>
+  {% endfor %}
+  <dl>
+    <dt>Date
+    <dd>{{ this.date|dateformat }}
+    {% if this.website %}
+    <dt>Website
+    <dd><a href="{{ this.website }}">{{ this.website.host }}</a>
+    <dt>Website
+    <dd> 
+      
+    {% endif %}
+  </dl>
+  <h2>Description</h2>
+  <div class="description">{{ this.description }}</div>
+{% endblock %}
